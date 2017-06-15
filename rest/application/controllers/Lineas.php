@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require_once(APPPATH.'/Libraries/REST_Controller.php');
+require_once( APPPATH.'/libraries/REST_Controller.php' );
 
-use Restserver\Libraries\REST_Controller;
+use Restserver\libraries\REST_Controller;
 
 class Lineas extends REST_Controller {
 
@@ -22,8 +22,8 @@ class Lineas extends REST_Controller {
     $query = $this->db->query('SELECT * FROM `lineas` ');
 
     $respuesta = array(
-              'error' => Flase,
-              'lineas' => $query ->result_array()
+              'error' => FALSE,
+              'lineas' => $query->result_array()
             );
     $this->response( $respuesta );
   }

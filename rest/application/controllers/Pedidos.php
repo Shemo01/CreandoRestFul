@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require_once(APPPATH.'/Libraries/REST_Controller.php');
+require_once(APPPATH.'/libraries/REST_Controller.php');
 
-use Restserver\Libraries\REST_Controller;
+use Restserver\libraries\REST_Controller;
 
 class Pedidos extends REST_Controller {
 
@@ -185,7 +185,7 @@ class Pedidos extends REST_Controller {
     $condiciones = array( 'orden_id' => $orden_id );
     $this->db->delete( 'ordenes_detalle', $condiciones );
 
-    $respuesta = array('error' => FALSO,
+    $respuesta = array('error' => FALSE,
                        'mensaje'=>'Orden Eliminada'
                        );
     $this->response( $respuesta );

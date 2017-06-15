@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require_once(APPPATH.'/Libraries/REST_Controller.php');
+require_once(APPPATH.'/libraries/REST_Controller.php');
 
-use Restserver\Libraries\REST_Controller;
+use Restserver\libraries\REST_Controller;
 
 class Login extends REST_Controller {
 
