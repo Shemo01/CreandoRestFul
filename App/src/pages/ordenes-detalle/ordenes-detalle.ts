@@ -1,24 +1,43 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 
-/**
- * Generated class for the OrdenesDetallePage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-@IonicPage()
+//servicios
+import { CarritoService } from "../../providers/index.services";
+
 @Component({
   selector: 'page-ordenes-detalle',
   templateUrl: 'ordenes-detalle.html',
 })
 export class OrdenesDetallePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  orden:any = {};
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private _cs:CarritoService,
+              private alertCtrl:AlertController) {
+
+      this.orden = this.navParams.get("orden");
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad OrdenesDetallePage');
+  borrar_orden( orden_id:string ){
+
+   this._cs.borrar_orden(orden_id)
+       .subscribe( data =>{
+
+         if( data.error ){
+           //error mostramos
+           this.alertCtrl.create({
+             title:"Error en la Orden!!",
+             subTitle: data.mensaje,
+             buttons:["OK"]
+           }).present();
+         }else{
+           //todo ok
+           this.navCtrl.pop();
+         }
+
+       });
   }
 
 }

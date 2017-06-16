@@ -1,18 +1,47 @@
-<!--
-  Generated template for the LoginPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>login</ion-title>
+  <ion-navbar color="morado">
+
+    <ion-buttons>
+
+      <button ion-button
+              (click)=" viewCtrl.dismiss( false )">
+              <ion-icon name="ios-close-circle" md="md-close-circle"></ion-icon>
+      </button>
+
+    </ion-buttons>
+
+    <ion-title>Login</ion-title>
+
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <ion-list>
+
+  <ion-item>
+    <ion-label fixed>Correo</ion-label>
+    <ion-input type="Email" [(ngModel)]="correo"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label fixed>Contraseña</ion-label>
+    <ion-input type="password" [(ngModel)]="contrasena"></ion-input>
+  </ion-item>
+
+</ion-list>
+
+<button ion-button
+        color="morado"
+        [disabled]=" correo.length < 5 || contrasena.length < 5 "
+        (click)="ingresar()"
+        block>
+  Ingresar
+</button>
+
 
 </ion-content>
